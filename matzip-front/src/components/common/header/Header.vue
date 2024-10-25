@@ -6,7 +6,11 @@ import {useRouter} from "vue-router";
 
 const authStore = useAuthStore();
 const router = useRouter();
-const activeMenu = ref(null);
+
+function checkUserRole() {
+  if (authStore.userRole !== 'admin') router.push('/admin');
+  else if (authStore.userRole !== 'user') router.push(`/user/${authStore.userSeq}`);
+}
 
 function handleLogin() {
   router.push('/user/login');
@@ -104,7 +108,7 @@ onBeforeUnmount(() => {
               <a href="">프로필</a>
             </b-dropdown-item>
             <b-dropdown-item>
-              <a href="">마이페이지</a>
+              <a href="" @click="checkUserRole">마이페이지</a>
             </b-dropdown-item>
           </b-dropdown>
         </li>
