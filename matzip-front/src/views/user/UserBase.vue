@@ -1,13 +1,8 @@
 <script setup>
-import { RouterView } from 'vue-router';
-import Header from "@/components/common/Header/Header.vue";
-
+import {RouterView} from 'vue-router';
 </script>
 
 <template>
-  <header>
-    <Header/>
-  </header>
   <section class="flex-shrink-0">
     <div class="container">
       <RouterView/>

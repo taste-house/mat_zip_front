@@ -2,6 +2,7 @@
 import {onMounted, ref} from 'vue';
 import axios from 'axios';
 import SelectComponent from '../../../components/admin/admin-views/user-search/SelectComponent.vue';
+import TableComponent from "@/components/admin/admin-views/user-search/TableComponent.vue";
 
 
 const orderBy = ref('');
@@ -28,8 +29,8 @@ const influencerOptions = [
   {value: 'N', text: '일반'}
 ];
 
-// const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0IiwiYXV0aCI6WyJ1c2VyIl0sImV4cCI6MTcyOTcxMjkzM30._iSX40z6dq2hya_nGnVFp03sjQPuk_Gf8ALVFgn_w2S2sjbpqXM3US3tBlpy5gZ4ZCsWBrr7dgsni2Q8l2SjuA';
-// authStore.login(token);
+
+const endPoint = ref('');
 
 const search = async () => {
   const searchParams = {
@@ -39,56 +40,36 @@ const search = async () => {
     orderBy: orderBy.value
   };
 
-  let endPoint = '';
+  endPoint.value = '';
 
   if (searchParams.searchType !== '') {
-    endPoint += `?searchType=${searchParams.searchType}`;
+    endPoint.value += `?searchType=${searchParams.searchType}`;
   }
 
   if (searchParams.influencerYn !== '') {
-    if (endPoint.length > 0) endPoint += '&';
+    if (endPoint.value.length > 0) endPoint.value += '&';
     else {
-      endPoint += '?';
+      endPoint.value += '?';
     }
-    endPoint += `influencerYn=${searchParams.influencerYn}`;
+    endPoint.value += `influencerYn=${searchParams.influencerYn}`;
   }
 
   if (searchParams.searchWord !== '') {
-    if (endPoint.length > 0) endPoint += '&';
+    if (endPoint.value.length > 0) endPoint.value += '&';
     else {
-      endPoint += '?';
+      endPoint.value += '?';
     }
-    endPoint += `searchWord=${searchParams.searchWord}`;
+    endPoint.value += `searchWord=${searchParams.searchWord}`;
   }
 
   if (searchParams.orderBy !== '') {
-    if (endPoint.length > 0) endPoint += '&';
+    if (endPoint.value.length > 0) endPoint.value += '&';
     else {
-      endPoint += '?';
+      endPoint.value += '?';
     }
-    endPoint += `orderBy=${searchParams.orderBy}`;
+    endPoint.value += `orderBy=${searchParams.orderBy}`;
   }
-
-
-  try {
-    const response = await axios.get(`http://localhost:8000/user/api/v1/users${endPoint}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-          }
-        }
-    );
-    console.log('검색 결과:', response.data);
-    console.log(endPoint);
-    console.log(localStorage.getItem('accessToken'));
-
-    // 검색 결과 처리
-  } catch (error) {
-    console.error('검색 중 오류 발생:', error);
-    console.log(localStorage.getItem('accessToken'));
-
-  }
-
-
+  console.log(endPoint.value);
 };
 
 </script>
@@ -140,13 +121,8 @@ const search = async () => {
 
     </div>
 
-    <div class="row">
-      <div class="col">
-        <h5>선택된 값들:</h5>
-        <p>검색 조건 : {{ selectedOption }}</p>
-        <p>인기회원: {{ influencerYn }}</p>
-        <p>검색어: {{ searchWord }}</p>
-      </div>
+    <div>
+      <TableComponent :endPoint="endPoint"/>
     </div>
   </div>
 

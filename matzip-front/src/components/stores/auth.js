@@ -13,7 +13,7 @@ export const useAuthStore = defineStore('auth', () => {
             accessToken.value = token;
             const payload = JSON.parse(atob(token.split('.')[1])); // JWT 토큰의 페이로드 추출
             userRole.value = payload.auth;
-            userSeq.value = payload.seq;
+            userSeq.value = payload.sub;
         }
     });
 
@@ -22,7 +22,7 @@ export const useAuthStore = defineStore('auth', () => {
         localStorage.setItem('accessToken', token); // 토큰을 localStorage에 저장
         const payload = JSON.parse(atob(token.split('.')[1])); // JWT 토큰의 페이로드 추출
         userRole.value = payload.auth;
-        userSeq.value = payload.seq;
+        userSeq.value = payload.sub;
     }
 
     function logout() {
