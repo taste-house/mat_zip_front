@@ -24,7 +24,7 @@ async function handleLogin() {
       return;
     }
 
-    const response = await axios.post('https://matzipapi.huichan.kr/user/api/v1/auth/login', {
+    const response = await axios.post('http://localhost:8000/user/api/v1/auth/login', {
       userEmail: email.value,
       userPassword: password.value,
     });

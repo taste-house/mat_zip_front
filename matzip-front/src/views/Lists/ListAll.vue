@@ -9,7 +9,7 @@ const size = ref(5);
 //데이터 불러오기 ex
 const fetchData = async () => {
   try {
-    const response = await axios.get('https://matzipapi.huichan.kr/back/api/v1/listbox', {
+    const response = await axios.get('http://localhost:8000/back/api/v1/listbox', {
       params: {
         page: page.value,
         size: size.value,

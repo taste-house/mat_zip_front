@@ -25,7 +25,7 @@ async function resetPassword() {
   }
 
   try {
-    const response = await axios.post('https://matzipapi.huichan.kr/user/api/v1/auth/reset-password', {
+    const response = await axios.post('http://localhost:8000/user/api/v1/auth/reset-password', {
           userPassword: newPassword.value,
         },
         {

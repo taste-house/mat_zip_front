@@ -16,7 +16,7 @@ const router = useRouter();
 async function findEmail() {
   if (name.value && phone.value) {
     try {
-      const response = await axios.post('https://matzipapi.huichan.kr/user/api/v1/auth/find-email', {
+      const response = await axios.post('http://localhost:8000/user/api/v1/auth/find-email', {
         userName: name.value,
         userPhone: phone.value
       });

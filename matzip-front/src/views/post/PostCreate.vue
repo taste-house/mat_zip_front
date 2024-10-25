@@ -61,7 +61,7 @@ const initializeEditor = () => {
     hooks: {
       addImageBlobHook: async (blob, callback) => {
         const uploadResult = await uploadImage(blob);
-        callback(`https://matzipapi.huichan.kr/back${uploadResult.url}`);
+        callback(`http://localhost:8000/back${uploadResult.url}`);
       }
     }
   });
@@ -73,7 +73,7 @@ const uploadImage = async (blob) => {
   imageFormData.append('image', blob);
 
   try {
-    const response = await axios.post('https://matzipapi.huichan.kr/back/api/v1/posts/uploadImage', imageFormData);
+    const response = await axios.post('http://localhost:8000/back/api/v1/posts/uploadImage', imageFormData);
     return response.data;
   } catch (error) {
     console.error('Image upload failed:', error);
@@ -98,7 +98,7 @@ const submitPost = async () => {
 
   // 게시글 데이터를 서버에 전송하는 코드 작성
   try {
-    await axios.post('https://matzipapi.huichan.kr/back/api/v1/posts', dataToSend,{
+    await axios.post('http://localhost:8000/back/api/v1/posts', dataToSend,{
       headers: {
         "Content-Type": "application/json",
       },

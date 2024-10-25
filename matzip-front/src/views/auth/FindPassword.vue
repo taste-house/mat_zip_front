@@ -13,7 +13,7 @@ const isModalOpen = ref(false);
 async function sendPasswordEmail() {
   if (email.value && phone.value) {
     try {
-      const response = await axios.post('https://matzipapi.huichan.kr/user/api/v1/auth/send-pw-reset-url', {
+      const response = await axios.post('http://localhost:8000/user/api/v1/auth/send-pw-reset-url', {
         userEmail: email.value,
         userPhone: phone.value
       });
