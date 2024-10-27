@@ -44,10 +44,10 @@ const toggleSubMenu = (index) => {
           <a class="nav-link" @click="toggleSubMenu(2)">패널티</a>
           <ul v-if="isSubMenuVisible[2]" class="nav flex-column ms-3">
             <li class="nav-item">
-              <RouterLink class="nav-link" to="/admin/penalty-search">패널티 관리</RouterLink>
+              <RouterLink class="nav-link" to="/admin/penalty">패널티 관리</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" to="/admin/penalty">패널티 조회</RouterLink>
+              <RouterLink class="nav-link" to="/admin/penalty-search">패널티 조회</RouterLink>
             </li>
           </ul>
         </li>

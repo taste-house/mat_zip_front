@@ -81,6 +81,7 @@ console.log(localStorage.getItem('accessToken'));
             <b-dropdown-item href="#" disabled>나의 리스트</b-dropdown-item>
           </b-nav-item-dropdown>
           <b-nav-item href="/user/review">Review</b-nav-item>
+          <b-nav-item @click="checkUserRole">MyPage</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-item id="best-tag">1. 인기 태그</b-nav-item>
