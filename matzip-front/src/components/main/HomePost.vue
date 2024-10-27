@@ -1,10 +1,13 @@
 <template>
+  <div class="header">
+    <a> 게시판</a>
+  </div>
   <div class="home-post-container">
     <div class="board-list">
       <div class="board-item" v-for="(board, index) in boards" :key="index">
         <!-- 게시판 이름 클릭 시 이동 -->
         <h3 class="board-name" @click="onBoardClick(board.seq)">
-          {{ board.name }}
+          📙 {{ board.name }}
         </h3>
 
         <!-- 주황색 줄 추가 -->
@@ -59,15 +62,28 @@ const onPostClick = (post) => {
 </script>
 
 <style scoped>
+
+.header{
+  font-size:48px;
+  font-weight: bold;
+  margin:60px 0 20px 0;
+}
 .home-post-container {
-  margin-top: 100px;
-  padding: 20px;
+  display: flex;
+  width: 100%;
+  border: 1px solid #ccc; /* 회색 테두리 추가 */
+  border-radius: 13px; /* 테두리 곡률 설정 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+  padding: 16px; /* 내부 여백 추가 */
+  background-color: #fff; /* 배경색 추가 */
 }
 
 .board-list {
   display: flex;
+  margin: 20px 0 20px 0;
+  justify-content: center;
   flex-wrap: wrap; /* 줄바꿈 허용 */
-  gap: 130px; /* 각 게시판 사이의 간격을 130px로 설정 */
+  gap: 70px; /* 각 게시판 사이의 간격을 130px로 설정 */
 }
 
 .board-item {

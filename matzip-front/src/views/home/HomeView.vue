@@ -1,9 +1,10 @@
 <template class="main-template">
   <div class="main-container">
 
-    <h1 class="space-text">Space</h1>
 
-<!--     맵 & 인기태그-->
+    <img src="../../assets/space.png" class="space-text"/>
+
+    <!--     맵 & 인기태그-->
     <div class="main-map">
       <current-map />
       <hot-tag :tags="tags" />
@@ -113,13 +114,21 @@ onMounted(async () =>{
 .main-map {
   display: flex;
   width: 100%;
+  border: 1px solid #ccc; /* 회색 테두리 추가 */
+  border-radius: 13px; /* 테두리 곡률 설정 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
+  padding: 16px; /* 내부 여백 추가 */
+  background-color: #fff; /* 배경색 추가 */
+
 }
 
 .space-text {
-  margin: 20px;
+  width: 160px;
+  margin: 40px 0 20px 10px;
+  align-self: flex-start; /* 왼쪽 정렬 */
 }
 
-h1{
-  text-align: left;
-}
+
+
+
 </style>

@@ -1,6 +1,8 @@
 <template>
   <div class="hot-list">
-    <h2>실시간 인기 태그</h2>
+    <div class="header">
+      <h2>🔖 HOT Tag</h2>
+    </div>
     <ul>
       <li v-for="(tag, index) in tags" :key="index">
         {{ index + 1 }}.&nbsp;&nbsp; {{ tag }}
@@ -21,22 +23,28 @@ const props = defineProps({
 </script>
 
 <style scoped>
+
 .hot-list {
-  background-color: #f0f0f0; /* 회색 배경 */
-  padding: 10px; /* 패딩 */
+  background-color: #fff; /* 회색 배경 */
+  border: 1px solid #FF7315;
   border-radius: 8px; /* 모서리 둥글게 */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
   min-width: 250px;
-  padding-top: 30px;
-  padding-left: 30px;
+
+}
+
+.header{
+  padding: 20px 0 1px 12px;
+  background-color: #FF7315;
+  color:#fff
 }
 
 h2 {
-  margin-bottom: 30px; /* 제목과 리스트 사이의 간격 */
+  margin-bottom: 20px; /* 제목과 리스트 사이의 간격 */
   display: flex;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold;
-  justify-content: center;
+  justify-content: left;
 }
 
 ul {
@@ -45,6 +53,7 @@ ul {
 }
 
 li {
-  margin-bottom: 15px; /* 각 태그 사이의 간격 */
+  display: flex; /* 플렉스 박스로 정렬 */
+  margin: 15px 0 0 20px;
 }
 </style>
